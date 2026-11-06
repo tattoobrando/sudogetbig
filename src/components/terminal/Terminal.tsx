@@ -9,6 +9,7 @@ import { createFS } from "./fs";
 import { COMMANDS, SUGGESTIONS } from "./commands";
 import { B, G, M, Ok, R, Warn, Y } from "./Out";
 import { pick } from "@/lib/random";
+import { USERNAME_RE } from "@/lib/physique";
 
 type Line = { id: number; node: ReactNode };
 
@@ -371,6 +372,18 @@ export default function Terminal() {
     });
     return () => registerTerminal(null);
   }, [registerTerminal, typeAndRun]);
+
+  // Shared links like sudogetbig.com/github/<user> land here as ?gh=<user> and run the report.
+  useEffect(() => {
+    const gh = new URLSearchParams(window.location.search).get("gh");
+    if (!gh || !USERNAME_RE.test(gh)) return;
+    window.history.replaceState(null, "", window.location.pathname);
+    const t = setTimeout(() => {
+      document.getElementById("terminal")?.scrollIntoView({ block: "center" });
+      void typeAndRun(`sudo get big --github ${gh}`);
+    }, 400);
+    return () => clearTimeout(t);
+  }, [typeAndRun]);
 
   /* ---------------- keyboard ---------------- */
   const onKeyDown = async (e: KeyboardEvent<HTMLInputElement>) => {

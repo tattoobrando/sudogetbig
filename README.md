@@ -18,6 +18,38 @@ Live at **https://sudogetbig.com** (once deployed — see below).
 | **Diagnostics** | `legscan` vulnerability scanner, a bug-report generator (copy as markdown), and a shareable Gains System Report. |
 | **Extras** | Toast alerts, Konami code, achievements saved in localStorage, reduced-motion support. |
 
+## curl mode (it works in a real terminal)
+
+`src/proxy.ts` spots command-line clients (curl, wget, HTTPie, PowerShell) and serves text
+instead of HTML. Browsers are unaffected.
+
+```bash
+curl sudogetbig.com                      # animated terminal homepage
+curl sudogetbig.com/github/<username>    # GitHub physique report
+curl -sL sudogetbig.com/install | bash   # harmless "installer" (it only prints text — read it first)
+curl sudogetbig.com/neofetch
+curl sudogetbig.com/fortune
+curl sudogetbig.com/help
+```
+
+Add `?plain` for no colors/animation. On Windows PowerShell use `curl.exe` (plain `curl` is an
+alias for Invoke-WebRequest there). `NO_COLOR=1` turns off colors in the install script.
+
+## GitHub physique
+
+`sudo get big --github <user>` (or `physique <user>`) in the browser terminal, or
+`curl sudogetbig.com/github/<user>`. It reads public GitHub data only — the profile, owned repos and
+the last ~90 days of public events — and maps it to a physique: commits are reps, weekends are leg
+day, languages are muscle groups. Logic lives in `src/lib/physique.ts`.
+
+Sharing `https://sudogetbig.com/github/<user>` opens the site and runs the report automatically.
+
+**Rate limits:** browsers call GitHub directly (60 requests/hour per visitor, 3 per report). The curl
+endpoint calls GitHub from Vercel's servers, which share a limit, so add a token there:
+GitHub → Settings → Developer settings → Fine-grained tokens → generate one with **public repository
+access only and no permissions**, then in Vercel → Project → Settings → Environment Variables add
+`GITHUB_TOKEN` and redeploy. Results are also cached for 10 minutes.
+
 ## Stack
 
 Next.js 16 (App Router) · TypeScript · Tailwind CSS v4 · Motion · Lucide icons ·
@@ -54,11 +86,17 @@ src/
       Out.tsx               output primitives (colors, progress bars, spinners)
       Terminal.tsx          the shell UI: history, keyboard, prompts, intro
       commands/             command definitions, grouped by theme
-        gains.tsx  dev.tsx  system.tsx  eggs.tsx  index.tsx (registry + help + man)
+        gains.tsx  dev.tsx  system.tsx  eggs.tsx  github.tsx  index.tsx (registry + help + man)
     sections/               page sections (Hero, ControlPanel, Installer, ...)
     providers/              shared state (mode, eggs, stats, toasts)
     ui/                     Toaster, Ambient (Konami + alerts), SectionHead
-  lib/                      helpers (random, storage, clipboard, report, eggs)
+  lib/
+    physique.ts             GitHub fetch + analysis + ASCII build (browser and server)
+    cli.ts                  ANSI colors, streaming, renderers for curl mode
+    installScript.ts        the harmless bash script behind /install
+    ...                     random, storage, clipboard, report, eggs, fortunes
+  app/cli, install, github/[user], neofetch, fortune, help    curl endpoints
+  proxy.ts                  routes curl/wget/HTTPie/PowerShell to the text version
 ```
 
 ### Adding a command

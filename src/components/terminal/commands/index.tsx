@@ -7,6 +7,7 @@ import { gainsCommands } from "./gains";
 import { devCommands } from "./dev";
 import { systemCommands } from "./system";
 import { eggCommands } from "./eggs";
+import { githubCommands } from "./github";
 
 const GROUPS: { id: Command["group"]; title: string }[] = [
   { id: "gains", title: "GAINS" },
@@ -38,6 +39,8 @@ const help: Command = {
     }
     ctx.print(
       <M className="mt-2 block">
+        New: <G>sudo get big --github &lt;you&gt;</G> rates your GitHub physique. Also works in a real terminal: <G>curl sudogetbig.com</G>
+        <br />
         Tab autocompletes · ↑/↓ history · Ctrl+C aborts · Ctrl+L clears ·{" "}
         <Y>{hidden} undocumented commands exist.</Y> Find them.
       </M>,
@@ -124,6 +127,7 @@ export const COMMANDS: Command[] = [
   help,
   ...gainsCommands,
   ...devCommands,
+  ...githubCommands,
   ...systemCommands,
   clear,
   man,
@@ -132,6 +136,7 @@ export const COMMANDS: Command[] = [
 
 export const SUGGESTIONS = [
   "sudo get big",
+  "sudo get big --github octocat",
   "neofetch",
   "sudo apt install calves",
   "top",

@@ -4,6 +4,7 @@ import type { Command, Ctx } from "../engine";
 import { B, C, G, M, Ok, Pre, R, Tag, Warn, Y } from "../Out";
 import { lines, progress, steps, type, yes } from "./helpers";
 import { pick } from "@/lib/random";
+import { runPhysique } from "./github";
 
 /* ------------------------------------------------------------------
    Muscle packages for `apt install`
@@ -370,8 +371,13 @@ const sudoGetBig: Command = {
   usage: "sudo get big [--now]",
   summary: "install the full hypertrophy stack",
   group: "gains",
-  complete: () => ["--now"],
+  complete: () => ["--now", "--github"],
   async run(ctx) {
+    const gi = ctx.args.indexOf("--github");
+    if (gi >= 0) {
+      await runPhysique(ctx, ctx.args[gi + 1] ?? "");
+      return;
+    }
     if (!ctx.sudo && !ctx.isRoot) {
       ctx.print(<R>get: big: Permission denied</R>);
       ctx.print(<M>Your physique is running on limited privileges. Try: <G>sudo get big</G></M>);
