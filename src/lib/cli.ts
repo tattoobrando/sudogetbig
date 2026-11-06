@@ -55,104 +55,117 @@ export interface Out {
   sleep: (ms: number) => Promise<void>;
   /** Prints a spinner, waits for `work`, then replaces it with ✓ label. */
   step: <T>(label: string, work?: Promise<T> | number) => Promise<T | undefined>;
-  type: (s: string, ms?: number) => Promise<void>;
+  /** Types `text` after `prefix`, one character at a time, ending the line. */
+  typeLine: (prefix: string, text: string, ms?: number) => Promise<void>;
   p: Paint;
   opts: CliOpts;
 }
 
 const FRAMES = ["⠋", "⠙", "⠹", "⠸", "⠼", "⠴", "⠦", "⠧", "⠇", "⠏"];
 
-export function streamText(req: Request, script: (o: Out) => Promise<void>, init: { status?: number; headers?: Record<string, string> } = {}) {
+/*
+  Record-then-play: the script runs first (doing any real work, e.g. GitHub
+  fetches) while we record text and pauses. Then we stream the recording with
+  the pauses, and an exact Content-Length so every client knows where the
+  response ends (Windows curl/schannel complains otherwise).
+*/
+type Ev = { t: "w"; s: string } | { t: "s"; ms: number };
+
+export async function streamText(
+  req: Request,
+  script: (o: Out) => Promise<void>,
+  init: { status?: number; headers?: Record<string, string> } = {},
+): Promise<Response> {
   const opts = cliOpts(req);
   const p = paint(opts.color);
-  const enc = new TextEncoder();
-  let closed = false;
+  const evs: Ev[] = [];
 
-  const stream = new ReadableStream<Uint8Array>({
-    async start(controller) {
-      const write = (s: string) => {
-        if (closed) return;
-        try {
-          controller.enqueue(enc.encode(s));
-        } catch {
-          closed = true;
-        }
-      };
-      const sleep = (ms: number) => (opts.animate && !closed ? new Promise<void>((r) => setTimeout(r, ms)) : Promise.resolve());
-      const o: Out = {
-        write,
-        line: (s = "") => write(s + "\n"),
-        sleep,
-        p,
-        opts,
-        async type(s, ms = 35) {
-          if (!opts.animate) return write(s);
-          for (const ch of s) {
-            write(ch);
-            await sleep(ms);
-          }
-        },
-        async step<T>(label: string, work?: Promise<T> | number) {
-          const job: Promise<T | undefined> =
-            typeof work === "number" || work === undefined ? sleep(typeof work === "number" ? work : 350).then(() => undefined) : work;
-          if (opts.animate) {
-            let i = 0;
-            let done = false;
-            const spin = (async () => {
-              const min = sleep(250);
-              while (!done && !closed) {
-                write(`\r${p.c(FRAMES[i++ % FRAMES.length])} ${label}`);
-                await new Promise((r) => setTimeout(r, 80));
-              }
-              await min;
-            })();
-            try {
-              const res = await job;
-              done = true;
-              await spin;
-              write(`\r${p.g("✓")} ${label}\x1b[K\n`);
-              return res;
-            } catch (e) {
-              done = true;
-              await spin;
-              write(`\r${p.r("✗")} ${label}\x1b[K\n`);
-              throw e;
-            }
-          }
-          try {
-            const res = await job;
-            write(`${p.g("✓")} ${label}\n`);
-            return res;
-          } catch (e) {
-            write(`${p.r("✗")} ${label}\n`);
-            throw e;
-          }
-        },
-      };
-      try {
-        await script(o);
-      } catch (e) {
-        write(`\n${p.r("segfault (form breakdown):")} ${e instanceof Error ? e.message : "unknown error"}\n`);
-      } finally {
-        if (!closed) {
-          closed = true;
-          try {
-            controller.close();
-          } catch {
-            /* already closed */
-          }
-        }
+  const write = (s: string) => {
+    const last = evs[evs.length - 1];
+    if (last && last.t === "w") last.s += s;
+    else evs.push({ t: "w", s });
+  };
+  const sleep = (ms: number) => {
+    if (opts.animate && ms > 0) evs.push({ t: "s", ms });
+    return Promise.resolve();
+  };
+  // Every frame ends with "\n" so curl flushes it (stdout is line-buffered);
+  // the next frame moves the cursor up one line and redraws it.
+  const UP = "\x1b[1A\r";
+  const spin = (label: string, ms: number) => {
+    if (!opts.animate) return false;
+    const frames = Math.max(3, Math.round(ms / 80));
+    for (let i = 0; i < frames; i++) {
+      write(`${i ? UP : ""}${p.c(FRAMES[i % FRAMES.length])} ${label}\x1b[K\n`);
+      evs.push({ t: "s", ms: 80 });
+    }
+    return true;
+  };
+
+  const o: Out = {
+    write,
+    line: (s = "") => write(s + "\n"),
+    sleep,
+    p,
+    opts,
+    async typeLine(prefix, text, ms = 35) {
+      if (!opts.animate) return write(prefix + text + "\n");
+      write(prefix + "\n");
+      for (let i = 1; i <= text.length; i++) {
+        evs.push({ t: "s", ms });
+        write(`${UP}${prefix}${text.slice(0, i)}\x1b[K\n`);
       }
     },
+    async step<T>(label: string, work?: Promise<T> | number) {
+      const isJob = typeof work === "object" && work !== null;
+      const ms = typeof work === "number" ? work : 400;
+      try {
+        const res = isJob ? await (work as Promise<T>) : undefined;
+        const spun = spin(label, ms);
+        write(`${spun ? UP : ""}${p.g("✓")} ${label}\x1b[K\n`);
+        return res;
+      } catch (e) {
+        const spun = spin(label, ms);
+        write(`${spun ? UP : ""}${p.r("✗")} ${label}\x1b[K\n`);
+        throw e;
+      }
+    },
+  };
+
+  try {
+    await script(o);
+  } catch (e) {
+    write(`\n${p.r("segfault (form breakdown):")} ${e instanceof Error ? e.message : "unknown error"}\n`);
+  }
+
+  const enc = new TextEncoder();
+  const parts = evs.map((e) => (e.t === "w" ? { t: "w" as const, b: enc.encode(e.s) } : e));
+  const length = parts.reduce((n, e) => n + (e.t === "w" ? e.b.byteLength : 0), 0);
+
+  let i = 0;
+  let cancelled = false;
+  const body = new ReadableStream<Uint8Array>({
+    async pull(controller) {
+      while (i < parts.length && !cancelled) {
+        const e = parts[i++];
+        if (e.t === "w") {
+          controller.enqueue(e.b);
+          return; // let the consumer read before continuing
+        }
+        await new Promise((r) => setTimeout(r, e.ms));
+      }
+      controller.close();
+    },
     cancel() {
-      closed = true;
+      cancelled = true;
     },
   });
 
-  return new Response(stream, {
+  return new Response(body, {
     status: init.status ?? 200,
     headers: {
       "content-type": "text/plain; charset=utf-8",
+      "content-length": String(length),
       "cache-control": "no-store",
       "x-content-type-options": "nosniff",
       ...init.headers,
@@ -261,6 +274,7 @@ export function menu(o: Out) {
   for (const [c, d] of rows) o.line(`  ${p.g(c.padEnd(46))} ${p.m(d)}`);
   o.line();
   o.line(p.m("full interactive terminal: ") + p.c("https://sudogetbig.com") + p.m(" (60+ commands, 10 hidden)"));
+  o.line(p.d("no animation on Windows (Git Bash, PowerShell)? add -N:  curl -NL sudogetbig.com"));
   if (o.opts.powershell) {
     o.line();
     o.line(p.m("PowerShell tip: 'curl' here is Invoke-WebRequest. Use curl.exe for colors and animations."));

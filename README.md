@@ -32,6 +32,10 @@ curl -L sudogetbig.com/fortune
 curl -L sudogetbig.com/help
 ```
 
+Animations are drawn with newline-terminated frames, so curl shows them live in normal terminals.
+In Git Bash's window (and sometimes Windows consoles) curl buffers output — add `-N`
+(`curl -NL sudogetbig.com`) to see the animation there.
+
 `-L` matters: without `https://`, curl uses plain http, and Vercel answers http with a redirect to
 https ("Redirecting..."). `-L` follows it. `curl https://sudogetbig.com` works too.
 

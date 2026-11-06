@@ -21,13 +21,10 @@ export async function GET(req: Request) {
   return streamText(req, async (o) => {
     const { p } = o;
     o.line();
-    o.write(p.g("gains@sudogetbig") + p.m(":") + p.c("~") + p.m("$ "));
     await o.sleep(300);
-    await o.type("sudo get big", 45);
-    o.line();
-    o.write("[sudo] password for gains: ");
-    await o.type("********", 55);
-    o.line();
+    await o.typeLine(p.g("gains@sudogetbig") + p.m(":") + p.c("~") + p.m("$ "), "sudo get big", 70);
+    await o.sleep(250);
+    await o.typeLine("[sudo] password for gains: ", "********", 60);
     for (const s of ["Authenticating gym membership...", "Installing progressive_overload...", "Mounting /dev/delts...", "Disabling excuses.service..."]) {
       await o.step(s, 300 + Math.random() * 250);
     }
