@@ -1,0 +1,117 @@
+# sudo get big — ROOT ACCESS TO GAINS.
+
+A joke website for developers who lift (and lifters who deploy). It looks like a real
+command-line product at first glance and gets more absurd the longer you poke at it.
+
+Live at **https://sudogetbig.com** (once deployed — see below).
+
+## What's in it
+
+| Section | What it does |
+|---|---|
+| **Terminal** (hero) | A working client-side shell: parsing with quotes, ↑/↓ history, Tab completion (commands, packages, files), Ctrl+C / Ctrl+L, prompts that wait for input (`[Y/n]`), a tiny filesystem (`ls`, `cd`, `cat`, `touch`), themes, root mode, and ~60 commands including 10 hidden easter eggs. |
+| **Health strip** | Live gains uptime, protein bandwidth, an excuse process counter you can `kill -9` (it respawns). |
+| **Physique Control Panel** | CUT / BULK / DIRTY BULK. Switching changes status, metrics, warnings, the ASCII torso, the weight trend and a live journal. |
+| **Gains Installer** | Staged install with two real decisions (calves.dll, dirty_bulk) and different branches/endings. Replayable. |
+| **Modules** | Six fake packages with live terminal previews. |
+| **Docs** | Hidden until you click *View Documentation*: a `gains(1)` man page and release notes. |
+| **Diagnostics** | `legscan` vulnerability scanner, a bug-report generator (copy as markdown), and a shareable Gains System Report. |
+| **Extras** | Toast alerts, Konami code, achievements saved in localStorage, reduced-motion support. |
+
+## Stack
+
+Next.js 16 (App Router) · TypeScript · Tailwind CSS v4 · Motion · Lucide icons ·
+self-hosted fonts (Archivo, JetBrains Mono via Fontsource). No backend, no database, no API keys.
+The whole site is statically prerendered.
+
+## Run it locally
+
+Requires Node.js 20.9 or newer.
+
+```bash
+npm install
+npm run dev          # http://localhost:3000
+```
+
+Checks:
+
+```bash
+npm run lint         # ESLint
+npm run typecheck    # TypeScript
+npm run build        # production build
+npm run check        # all three
+```
+
+## Project layout
+
+```
+src/
+  app/                      layout, page, metadata, OG image, icon, robots, sitemap
+  components/
+    terminal/
+      engine.ts             tokenizer, command matching, tab completion, did-you-mean
+      fs.ts                 in-memory filesystem
+      Out.tsx               output primitives (colors, progress bars, spinners)
+      Terminal.tsx          the shell UI: history, keyboard, prompts, intro
+      commands/             command definitions, grouped by theme
+        gains.tsx  dev.tsx  system.tsx  eggs.tsx  index.tsx (registry + help + man)
+    sections/               page sections (Hero, ControlPanel, Installer, ...)
+    providers/              shared state (mode, eggs, stats, toasts)
+    ui/                     Toaster, Ambient (Konami + alerts), SectionHead
+  lib/                      helpers (random, storage, clipboard, report, eggs)
+```
+
+### Adding a command
+
+Add an object to any file in `src/components/terminal/commands/` and make sure it's in that file's
+exported array. That's it — `help`, Tab completion and "did you mean" pick it up automatically.
+
+```tsx
+const flex: Command = {
+  match: ["flex"],                 // words after an optional leading `sudo`
+  usage: "flex [--both-arms]",
+  summary: "show off",
+  group: "misc",                   // gains | dev | system | files | misc
+  // hidden: true,                 // keep it out of help + completion (easter egg)
+  async run(ctx) {
+    ctx.print(<span>💪 flexing…</span>);
+    await ctx.sleep(500);          // Ctrl+C-aware, shortened for reduced motion
+    const a = await ctx.ask("Both arms? [Y/n] ");
+    ctx.print(<Ok>{/^n/i.test(a) ? "One arm. Humble." : "Both arms. Unhumble."}</Ok>);
+  },
+};
+```
+
+`ctx` also gives you `sudo`, `args`, `fs`, `unlock(eggId)`, `toast()`, `setTheme()`, `setRoot()`,
+`setTrap()` (to capture input, like the vim egg) and more — see `Ctx` in `engine.ts`.
+
+## Deploy (GitHub → Vercel)
+
+1. **Create a GitHub repo** named `sudogetbig` (empty — no README, no .gitignore).
+2. **Push this folder** (it's already a git repo with one commit):
+   ```bash
+   git remote add origin https://github.com/<your-username>/sudogetbig.git
+   git push -u origin main
+   ```
+   The first push opens a browser window to sign in to GitHub.
+3. **Import into Vercel:** vercel.com → *Add New… → Project* → *Import Git Repository* → pick `sudogetbig`.
+   Framework preset is detected as Next.js. No environment variables. Click **Deploy**.
+4. From then on, **every push to `main` deploys automatically**, and every pull request gets a preview URL.
+
+## Custom domain: sudogetbig.com (DNS on Cloudflare)
+
+1. Vercel → your project → **Settings → Domains** → add `sudogetbig.com`, then add `www.sudogetbig.com`
+   and set it to redirect to `sudogetbig.com`.
+2. Vercel shows the exact records to create. Use **those values**. They are typically:
+   - `sudogetbig.com` (Name `@`): an **A** record to Vercel's IP, or a **CNAME** to a project-specific
+     `…vercel-dns…com` target. Cloudflare allows a CNAME at `@` (it flattens it).
+   - `www`: a **CNAME** to the target Vercel shows.
+3. In Cloudflare → **DNS → Records**, add them with **Proxy status: DNS only (grey cloud)** so Vercel
+   can issue the HTTPS certificate. Delete any old `@` or `www` records that conflict.
+4. **Do not touch the `media` (and `chat`) A records** — those point to the DigitalOcean server that
+   runs the put.io app at media.sudogetbig.com.
+5. Vercel verifies the domain and issues the certificate, usually within a few minutes.
+
+## License
+
+MIT for the code. The jokes are free; gains are not.
