@@ -65,9 +65,8 @@ const FRAMES = ["⠋", "⠙", "⠹", "⠸", "⠼", "⠴", "⠦", "⠧", "⠇", "
 
 /*
   Record-then-play: the script runs first (doing any real work, e.g. GitHub
-  fetches) while we record text and pauses. Then we stream the recording with
-  the pauses, and an exact Content-Length so every client knows where the
-  response ends (Windows curl/schannel complains otherwise).
+  fetches) while we record text and pauses. Then we stream the recording,
+  sleeping between writes so the terminal animates.
 */
 type Ev = { t: "w"; s: string } | { t: "s"; ms: number };
 
@@ -140,7 +139,6 @@ export async function streamText(
 
   const enc = new TextEncoder();
   const parts = evs.map((e) => (e.t === "w" ? { t: "w" as const, b: enc.encode(e.s) } : e));
-  const length = parts.reduce((n, e) => n + (e.t === "w" ? e.b.byteLength : 0), 0);
 
   let i = 0;
   let cancelled = false;
@@ -165,8 +163,9 @@ export async function streamText(
     status: init.status ?? 200,
     headers: {
       "content-type": "text/plain; charset=utf-8",
-      "content-length": String(length),
-      "cache-control": "no-store",
+      // No Content-Length: with it, proxies may hold the whole body before sending.
+      "cache-control": "no-store, no-transform",
+      "x-accel-buffering": "no",
       "x-content-type-options": "nosniff",
       ...init.headers,
     },
