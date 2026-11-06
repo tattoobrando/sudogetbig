@@ -24,13 +24,16 @@ Live at **https://sudogetbig.com** (once deployed — see below).
 instead of HTML. Browsers are unaffected.
 
 ```bash
-curl sudogetbig.com                      # animated terminal homepage
-curl sudogetbig.com/github/<username>    # GitHub physique report
-curl -sL sudogetbig.com/install | bash   # harmless "installer" (it only prints text — read it first)
-curl sudogetbig.com/neofetch
-curl sudogetbig.com/fortune
-curl sudogetbig.com/help
+curl -L sudogetbig.com                      # animated terminal homepage
+curl -L sudogetbig.com/github/<username>    # GitHub physique report
+curl -sL sudogetbig.com/install | bash      # harmless "installer" (it only prints text — read it first)
+curl -L sudogetbig.com/neofetch
+curl -L sudogetbig.com/fortune
+curl -L sudogetbig.com/help
 ```
+
+`-L` matters: without `https://`, curl uses plain http, and Vercel answers http with a redirect to
+https ("Redirecting..."). `-L` follows it. `curl https://sudogetbig.com` works too.
 
 Add `?plain` for no colors/animation. On Windows PowerShell use `curl.exe` (plain `curl` is an
 alias for Invoke-WebRequest there). `NO_COLOR=1` turns off colors in the install script.
@@ -38,7 +41,7 @@ alias for Invoke-WebRequest there). `NO_COLOR=1` turns off colors in the install
 ## GitHub physique
 
 `sudo get big --github <user>` (or `physique <user>`) in the browser terminal, or
-`curl sudogetbig.com/github/<user>`. It reads public GitHub data only — the profile, owned repos and
+`curl -L sudogetbig.com/github/<user>`. It reads public GitHub data only — the profile, owned repos and
 the last ~90 days of public events — and maps it to a physique: commits are reps, weekends are leg
 day, languages are muscle groups. Logic lives in `src/lib/physique.ts`.
 

@@ -97,7 +97,7 @@ say "  without reading it. Your security posture is weaker than your calves."
 say "  This one only printed text. The next one might not."
 say ""
 say "$M  Read this script:  curl -sL sudogetbig.com/install"
-say "  Rate your GitHub:  curl sudogetbig.com/github/<you>"
+say "  Rate your GitHub:  curl -L sudogetbig.com/github/<you>"
 say "  Full terminal:     https://sudogetbig.com$X"
 say ""
 `.replaceAll("\\${", "${");

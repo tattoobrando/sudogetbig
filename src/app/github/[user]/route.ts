@@ -45,7 +45,7 @@ export async function GET(req: Request, { params }: { params: Promise<{ user: st
       data = await o.step(`Pulling public profile for ${user}`, pending);
     } catch (e) {
       o.line(p.r(ghErrorMessage(e, user)));
-      o.line(p.m("try: curl sudogetbig.com/github/octocat"));
+      o.line(p.m("try: curl -L sudogetbig.com/github/octocat"));
       return;
     }
     await o.step("Counting sets (pushes) and reps (commits)", 300);

@@ -251,14 +251,14 @@ export function menu(o: Out) {
   const { p } = o;
   const cmd = o.opts.powershell ? "curl.exe" : "curl";
   const rows: [string, string][] = [
-    [`${cmd} sudogetbig.com/github/<you>`, "rate your GitHub physique"],
+    [`${cmd} -L sudogetbig.com/github/<you>`, "rate your GitHub physique"],
     [`${cmd} -sL sudogetbig.com/install | bash`, "install gains (read it first. seriously.)"],
-    [`${cmd} sudogetbig.com/neofetch`, "system specs"],
-    [`${cmd} sudogetbig.com/fortune`, "unsolicited wisdom"],
-    [`${cmd} sudogetbig.com/help`, "this list"],
+    [`${cmd} -L sudogetbig.com/neofetch`, "system specs"],
+    [`${cmd} -L sudogetbig.com/fortune`, "unsolicited wisdom"],
+    [`${cmd} -L sudogetbig.com/help`, "this list"],
   ];
   o.line(p.b("try these (they work):"));
-  for (const [c, d] of rows) o.line(`  ${p.g(c.padEnd(42))} ${p.m(d)}`);
+  for (const [c, d] of rows) o.line(`  ${p.g(c.padEnd(46))} ${p.m(d)}`);
   o.line();
   o.line(p.m("full interactive terminal: ") + p.c("https://sudogetbig.com") + p.m(" (60+ commands, 10 hidden)"));
   if (o.opts.powershell) {

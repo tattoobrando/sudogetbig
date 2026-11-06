@@ -108,7 +108,7 @@ export async function runPhysique(ctx: Ctx, username: string) {
   const ok = await copyText(shareText(p));
   ctx.print(
     <M>
-      {ok ? "Copied a summary to your clipboard. " : ""}Share: <G>{shareLink(p.login)}</G> · terminal: <G>curl sudogetbig.com/github/{p.login}</G>
+      {ok ? "Copied a summary to your clipboard. " : ""}Share: <G>{shareLink(p.login)}</G> · terminal: <G>curl -L sudogetbig.com/github/{p.login}</G>
     </M>,
   );
   if (p.login.toLowerCase() !== user.toLowerCase()) ctx.print(<M>(GitHub says the username is actually {p.login})</M>);
