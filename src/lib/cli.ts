@@ -121,11 +121,11 @@ export async function streamText(
       try {
         const res = isJob ? await (work as Promise<T>) : undefined;
         const spun = spin(label, ms);
-        write(`${spun ? UP : ""}${p.g("✓")} ${label}\x1b[K\n`);
+        write(`${spun ? UP : ""}${p.g("✓")} ${label}${spun ? "\x1b[K" : ""}\n`);
         return res;
       } catch (e) {
         const spun = spin(label, ms);
-        write(`${spun ? UP : ""}${p.r("✗")} ${label}\x1b[K\n`);
+        write(`${spun ? UP : ""}${p.r("✗")} ${label}${spun ? "\x1b[K" : ""}\n`);
         throw e;
       }
     },
@@ -265,6 +265,7 @@ export function menu(o: Out) {
   const rows: [string, string][] = [
     [`${cmd} -L sudogetbig.com/github/<you>`, "rate your GitHub physique"],
     [`${cmd} -sL sudogetbig.com/install | bash`, "install gains (read it first. seriously.)"],
+    [`${cmd} -L sudogetbig.com/lifts`, "root's real training log (charts!)"],
     [`${cmd} -L sudogetbig.com/neofetch`, "system specs"],
     [`${cmd} -L sudogetbig.com/fortune`, "unsolicited wisdom"],
     [`${cmd} -L sudogetbig.com/help`, "this list"],

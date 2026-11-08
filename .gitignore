@@ -39,3 +39,6 @@ yarn-error.log*
 # typescript
 *.tsbuildinfo
 next-env.d.ts
+
+# raw workout exports (only the summary in src/data/lifts.json is committed)
+*.csv

@@ -27,6 +27,7 @@ instead of HTML. Browsers are unaffected.
 curl -L sudogetbig.com                      # animated terminal homepage
 curl -L sudogetbig.com/github/<username>    # GitHub physique report
 curl -sL sudogetbig.com/install | bash      # harmless "installer" (it only prints text — read it first)
+curl -L sudogetbig.com/lifts                # real training log (+ ?lift=leg%20press for one lift)
 curl -L sudogetbig.com/neofetch
 curl -L sudogetbig.com/fortune
 curl -L sudogetbig.com/help
@@ -56,6 +57,23 @@ endpoint calls GitHub from Vercel's servers, which share a limit, so add a token
 GitHub → Settings → Developer settings → Fine-grained tokens → generate one with **public repository
 access only and no permissions**, then in Vercel → Project → Settings → Environment Variables add
 `GITHUB_TOKEN` and redeploy. Results are also cached for 10 minutes.
+
+## Lift log (/lifts)
+
+`sudogetbig.com/lifts` shows real training history from a Liftoff export: totals, weekly streak,
+estimated-1RM progression per lift, muscle-group balance and the decline of leg day. The same data
+powers `curl -L sudogetbig.com/lifts` and the `lifts` terminal command.
+
+To update it, export your workout data from Liftoff as CSV, then:
+
+```bash
+npm run lifts -- ~/Downloads/liftoff_workout_data.csv
+git add src/data/lifts.json && git commit -m "Update lift log" && git push
+```
+
+Only the summary (`src/data/lifts.json`) is committed. Notes, RPE, timestamps and the raw rows are
+never written, and `*.csv` is git-ignored so the export can't be committed by accident. Muscle groups
+are matched from exercise names in `scripts/lifts.mjs`; the script lists any it can't place.
 
 ## Stack
 
@@ -101,8 +119,12 @@ src/
     physique.ts             GitHub fetch + analysis + ASCII build (browser and server)
     cli.ts                  ANSI colors, streaming, renderers for curl mode
     installScript.ts        the harmless bash script behind /install
+    lifts.ts                lift-log data + helpers (page, curl, terminal)
+  data/lifts.json           summarized Liftoff export (from npm run lifts)
     ...                     random, storage, clipboard, report, eggs, fortunes
-  app/cli, install, github/[user], neofetch, fortune, help    curl endpoints
+  app/lifts                 the lift log page
+  app/cli, cli/lifts, install, github/[user], neofetch, fortune, help    curl endpoints
+scripts/lifts.mjs           Liftoff CSV → src/data/lifts.json
   proxy.ts                  routes curl/wget/HTTPie/PowerShell to the text version
 ```
 
