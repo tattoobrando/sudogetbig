@@ -1,7 +1,9 @@
 "use client";
 
 import { useGains } from "@/components/providers/GainsProvider";
+import Link from "next/link";
 import { EGG_COUNT } from "@/lib/eggs";
+import { legsTrend } from "@/lib/lifts";
 
 export default function Footer() {
   const { eggs, runInTerminal } = useGains();
@@ -20,7 +22,7 @@ export default function Footer() {
         <div className="text-[13px]">
           <div className="mb-3 text-[11px] uppercase tracking-[0.2em] text-dim">try</div>
           <ul className="space-y-1.5">
-            {["neofetch", "sudo systemctl start leg_day", "sudo apt remove cardio", "man gains"].map((c) => (
+            {["neofetch", "lifts", "sudo systemctl start leg_day", "sudo apt remove cardio", "man gains"].map((c) => (
               <li key={c}>
                 <button type="button" onClick={() => runInTerminal(c)} className="text-left text-muted hover:text-accent">
                   <span className="text-dim">$</span> {c}
@@ -39,7 +41,10 @@ export default function Footer() {
               calves: <span className="text-red">404</span>
             </li>
             <li>
-              leg_day: <span className="text-red">disabled</span>
+              leg_day:{" "}
+              <Link href="/lifts" className="text-red hover:underline">
+                {legsTrend().recent}% of sets (verified)
+              </Link>
             </li>
             <li>
               legal: <span className="text-text">unauthorized gains will be prosecuted</span>

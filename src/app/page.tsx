@@ -7,6 +7,7 @@ import Installer from "@/components/sections/Installer";
 import Modules from "@/components/sections/Modules";
 import Docs from "@/components/sections/Docs";
 import Diagnostics from "@/components/sections/Diagnostics";
+import LiftLog from "@/components/sections/LiftLog";
 import Footer from "@/components/sections/Footer";
 import Toaster from "@/components/ui/Toaster";
 import Ambient from "@/components/ui/Ambient";
@@ -29,6 +30,7 @@ export default function Home() {
         <Modules />
         <Docs />
         <Diagnostics />
+        <LiftLog />
       </main>
       <Footer />
       <Toaster />

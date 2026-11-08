@@ -10,6 +10,7 @@ const LINKS = [
   { href: "#installer", label: "installer" },
   { href: "#modules", label: "modules" },
   { href: "#diagnostics", label: "diagnostics" },
+  { href: "/lifts", label: "lifts" },
 ];
 
 export default function Nav() {
