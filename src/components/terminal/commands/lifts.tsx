@@ -3,7 +3,7 @@
 import type { Command } from "../engine";
 import { Bar, C, G, M, Pre, R, Y } from "../Out";
 import { steps } from "./helpers";
-import { asciiChart, compact, findings, findLift, fmtDate, legsTrend, LOG, nf, pct, solidLifts, sparkline } from "@/lib/lifts";
+import { asciiChart, compact, HEAT_CHARS, textHeatmap, findings, findLift, fmtDate, legsTrend, LOG, nf, pct, solidLifts, sparkline } from "@/lib/lifts";
 
 /* lifts [name]  ·  cat /var/log/gains.log */
 
@@ -69,6 +69,29 @@ const lifts: Command = {
         <M>
           {" "}
           {legs.early}% → {legs.recent}% of sets
+        </M>
+      </Pre>,
+    );
+    const hm = textHeatmap(40);
+    const SHADE = ["text-dim", "text-dim", "text-accent/40", "text-accent/60", "text-accent/80", "text-accent"];
+    ctx.print(<C className="mt-2 block font-bold tracking-wider">GIT LOG --GRAPH</C>);
+    ctx.print(
+      <Pre className="leading-[1.15]">
+        <span className="text-dim">{"    " + hm.months}</span>
+        {"\n"}
+        {hm.rows.map((r, ri) => (
+          <span key={ri}>
+            <span className="text-dim">{r.label} </span>
+            {r.levels.map((lv, i) => (
+              <span key={i} className={SHADE[lv + 1]}>
+                {HEAT_CHARS[lv + 1]}
+              </span>
+            ))}
+            {"\n"}
+          </span>
+        ))}
+        <M>
+          {hm.trained} training days out of {hm.span}
         </M>
       </Pre>,
     );

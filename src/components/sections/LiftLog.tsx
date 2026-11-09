@@ -3,6 +3,7 @@
 import Link from "next/link";
 import { ArrowRight, TerminalSquare } from "lucide-react";
 import SectionHead from "@/components/ui/SectionHead";
+import Heatmap from "@/components/lifts/Heatmap";
 import { useGains } from "@/components/providers/GainsProvider";
 import { compact, findLift, fmtDate, legsTrend, LOG, nf, pct, solidLifts, type TrackedLift } from "@/lib/lifts";
 
@@ -27,8 +28,6 @@ export default function LiftLog() {
   const { runInTerminal } = useGains();
   const t = LOG.totals;
   const legs = legsTrend();
-  const weeks = LOG.weekly.slice(-26);
-  const max = Math.max(...weeks.map((w) => w.sessions), 1);
   // the three most-trained lifts that went up, plus leg press for honesty
   const ups = solidLifts().filter((l) => l.change_pct > 0).slice(0, 3);
   const press = findLift("leg press");
@@ -57,21 +56,14 @@ export default function LiftLog() {
         ))}
       </div>
 
-      <div className="mt-4 grid gap-4 lg:grid-cols-[minmax(0,1fr)_minmax(0,1.3fr)]">
+      <div className="mt-4 grid grid-cols-[minmax(0,1fr)] gap-4 lg:grid-cols-[minmax(0,1fr)_minmax(0,1.3fr)]">
         <div className="rounded-xl border border-line bg-panel p-4 sm:p-5">
           <div className="flex items-baseline justify-between gap-3">
             <h3 className="text-[13px] font-bold uppercase tracking-[0.14em] text-cyan">uptime</h3>
-            <span className="text-[11.5px] text-dim">sessions/week, last 26 weeks</span>
+            <span className="text-[11.5px] text-dim">training days, last 26 weeks</span>
           </div>
-          <div className="mt-4 flex h-28 items-end gap-[3px]" role="img" aria-label={`Sessions per week for the last ${weeks.length} weeks, between ${Math.min(...weeks.map((w) => w.sessions))} and ${max}.`}>
-            {weeks.map((w) => (
-              <div
-                key={w.week}
-                title={`week of ${fmtDate(w.week)}: ${w.sessions} sessions`}
-                className={`flex-1 rounded-t-[3px] ${w.sessions ? "bg-accent/80 hover:bg-accent" : "bg-red/70"}`}
-                style={{ height: `${Math.max(w.sessions / max, 0.03) * 100}%` }}
-              />
-            ))}
+          <div className="mt-4">
+            <Heatmap weeks={26} compact />
           </div>
           <p className="mt-3 text-[12px] text-muted">
             <span className="text-accent">●</span> gains.service: active (running), {t.current_streak} weeks straight without a zero.

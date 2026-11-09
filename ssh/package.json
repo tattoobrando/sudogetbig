@@ -1,0 +1,15 @@
+{
+  "name": "sudogetbig-ssh",
+  "private": true,
+  "type": "module",
+  "description": "ssh gains.sudogetbig.com: the terminal app",
+  "scripts": {
+    "start": "node server.mjs"
+  },
+  "engines": {
+    "node": ">=22.18"
+  },
+  "dependencies": {
+    "ssh2": "1.17.0"
+  }
+}

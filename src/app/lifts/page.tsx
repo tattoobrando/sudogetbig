@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { DowBars, GroupBars, LegsBars, Panel, WeeklyBars } from "@/components/lifts/Charts";
 import LiftExplorer from "@/components/lifts/LiftExplorer";
+import Heatmap from "@/components/lifts/Heatmap";
 import { compact, findings, fmtDate, legsTrend, LOG, nf, TRACKED } from "@/lib/lifts";
 
 export const metadata: Metadata = {
@@ -68,6 +69,15 @@ export default function LiftsPage() {
           </ul>
         </section>
       ) : null}
+
+      <Panel
+        id="calendar"
+        title="git log --graph"
+        kicker="Every training day since the first export, one square per day. Darker = more sets. Looks like a commit history because it is one."
+        className="mt-4"
+      >
+        <Heatmap />
+      </Panel>
 
       <Panel id="progression" title="progression" kicker="Estimated one-rep max over time for every lift tracked on 4 or more days." className="mt-4">
         <LiftExplorer lifts={TRACKED} units={LOG.units} lastDay={LOG.range.last} />

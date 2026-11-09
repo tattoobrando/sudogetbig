@@ -1,5 +1,5 @@
 import { bar, streamText } from "@/lib/cli";
-import { asciiChart, compact, findings, findLift, fmtDate, legsTrend, LOG, nf, pct, solidLifts, sparkline, TRACKED } from "@/lib/lifts";
+import { asciiChart, compact, HEAT_CHARS, textHeatmap, findings, findLift, fmtDate, legsTrend, LOG, nf, pct, solidLifts, sparkline, TRACKED } from "@/lib/lifts";
 
 /*
   curl -L sudogetbig.com/lifts            the whole log
@@ -60,9 +60,20 @@ export async function GET(req: Request) {
     for (const [k, v] of kv) o.line(`  ${p.gb(k.padEnd(9))} ${v}`);
     o.line();
 
-    o.line(p.c(p.b("ATTENDANCE")) + p.m("  sessions per week, last 26 weeks"));
-    const recent = LOG.weekly.slice(-26).map((w) => w.sessions);
-    o.line("  " + p.g(sparkline(recent)) + p.m(`  ${Math.min(...recent)}–${Math.max(...recent)}/wk`));
+    const hm = textHeatmap(52);
+    o.line(p.c(p.b("GIT LOG --GRAPH")) + p.m(`  training days, last ${hm.weeks} weeks`));
+    const shade = (lv: number) => {
+      const ch = HEAT_CHARS[lv + 1];
+      if (!o.opts.color) return ch;
+      if (lv <= 0) return p.d(ch);
+      return `\x1b[38;5;${[0, 22, 28, 35, 48][lv]}m${ch}\x1b[0m`;
+    };
+    o.line("      " + p.d(hm.months));
+    for (const r of hm.rows) {
+      o.line(`  ${p.d(r.label)} ${r.levels.map(shade).join("")}`);
+      await o.sleep(40);
+    }
+    o.line(p.m(`      ${hm.trained} training days out of ${hm.span}   `) + p.d("· rest ") + [1, 2, 3, 4].map(shade).join("") + p.d(` more sets`));
     o.line();
 
     o.line(p.c(p.b("MUSCLE GROUPS")) + p.m("  share of all sets"));

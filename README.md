@@ -71,9 +71,23 @@ npm run lifts -- ~/Downloads/liftoff_workout_data.csv
 git add src/data/lifts.json && git commit -m "Update lift log" && git push
 ```
 
+Or skip the computer: **iPhone sync.** An iOS Shortcut sends the export straight to
+`POST /api/lifts`, which builds the same summary in memory and commits only
+`src/data/lifts.json` to GitHub, so Vercel redeploys on its own. It needs two Vercel environment
+variables: `LIFTS_UPLOAD_TOKEN` (a long random secret, also pasted into the Shortcut) and
+`LIFTS_GITHUB_TOKEN` (fine-grained token, this repo only, Contents read/write). Uploads with fewer
+sessions than the site already has are refused (add `?force` to override). `GET /api/lifts` returns
+the public summary as JSON.
+
 Only the summary (`src/data/lifts.json`) is committed. Notes, RPE, timestamps and the raw rows are
 never written, and `*.csv` is git-ignored so the export can't be committed by accident. Muscle groups
-are matched from exercise names in `scripts/lifts.mjs`; the script lists any it can't place.
+are matched from exercise names in `src/lib/liftsSummary.mjs`; the script lists any it can't place.
+
+## ssh gains.sudogetbig.com
+
+`ssh/` is a small public SSH app (Node + ssh2) that runs on the DigitalOcean droplet in Docker:
+any username, no password, no shell — just the SwoleOS terminal app with the live lift log. See
+[`ssh/README.md`](ssh/README.md) for install (it moves admin SSH to port 2222).
 
 ## Stack
 
@@ -119,12 +133,16 @@ src/
     physique.ts             GitHub fetch + analysis + ASCII build (browser and server)
     cli.ts                  ANSI colors, streaming, renderers for curl mode
     installScript.ts        the harmless bash script behind /install
-    lifts.ts                lift-log data + helpers (page, curl, terminal)
+    lifts.ts                lift-log data bound to liftsCore helpers (page, curl, terminal)
+    liftsCore.ts            lift helpers with no app imports (also used by ssh/)
+    liftsSummary.mjs        Liftoff CSV → summary (npm run lifts + iPhone sync)
   data/lifts.json           summarized Liftoff export (from npm run lifts)
     ...                     random, storage, clipboard, report, eggs, fortunes
   app/lifts                 the lift log page
+  app/api/lifts             GET summary JSON · POST iPhone sync
   app/cli, cli/lifts, install, github/[user], neofetch, fortune, help    curl endpoints
 scripts/lifts.mjs           Liftoff CSV → src/data/lifts.json
+ssh/                        ssh gains.sudogetbig.com (runs on the droplet)
   proxy.ts                  routes curl/wget/HTTPie/PowerShell to the text version
 ```
 

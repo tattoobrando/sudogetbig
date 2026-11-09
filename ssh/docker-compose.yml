@@ -1,0 +1,33 @@
+# ssh gains.sudogetbig.com — the SwoleOS terminal app.
+# Host port 22 -> container 2222. Admin SSH for the server lives on 2222 (see install.sh).
+services:
+  ssh:
+    build:
+      context: ..
+      dockerfile: ssh/Dockerfile
+    container_name: sudogetbig-ssh
+    restart: unless-stopped
+    ports:
+      - "22:2222"
+    volumes:
+      - sshdata:/data
+    environment:
+      LIFTS_URLS: "https://sudogetbig.com/api/lifts,https://sudogetbig.vercel.app/api/lifts"
+    # Locked down: no root, no capabilities, read-only filesystem, capped memory/processes.
+    read_only: true
+    tmpfs:
+      - /tmp
+    cap_drop:
+      - ALL
+    security_opt:
+      - no-new-privileges:true
+    mem_limit: 256m
+    pids_limit: 128
+    logging:
+      driver: json-file
+      options:
+        max-size: "5m"
+        max-file: "2"
+
+volumes:
+  sshdata:

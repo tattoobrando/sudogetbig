@@ -21,5 +21,5 @@ export function proxy(request: NextRequest) {
 }
 
 export const config = {
-  matcher: ["/((?!_next/|cli|install|github/|fortune|neofetch|help|opengraph-image|twitter-image|icon|robots\\.txt|sitemap\\.xml|favicon).*)"],
+  matcher: ["/((?!_next/|api/|cli|install|github/|fortune|neofetch|help|opengraph-image|twitter-image|icon|robots\\.txt|sitemap\\.xml|favicon).*)"],
 };
