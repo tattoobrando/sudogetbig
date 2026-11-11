@@ -40,7 +40,7 @@ const help: Command = {
     }
     ctx.print(
       <M className="mt-2 block">
-        New: <G>sudo get big --github &lt;you&gt;</G> rates your GitHub physique. <G>lifts</G> shows root&apos;s real training log. Also works in a real terminal: <G>curl -L sudogetbig.com</G>
+        New: <G>sudo get big --github &lt;you&gt;</G> rates your GitHub physique. <G>lifts</G> shows root&apos;s real training log. Also works in a real terminal: <G>curl -L sudogetbig.com</G> or <G>ssh gains.sudogetbig.com</G>
         <br />
         Tab autocompletes · ↑/↓ history · Ctrl+C aborts · Ctrl+L clears ·{" "}
         <Y>{hidden} undocumented commands exist.</Y> Find them.

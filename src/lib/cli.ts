@@ -269,6 +269,7 @@ export function menu(o: Out) {
     [`${cmd} -L sudogetbig.com/neofetch`, "system specs"],
     [`${cmd} -L sudogetbig.com/fortune`, "unsolicited wisdom"],
     [`${cmd} -L sudogetbig.com/help`, "this list"],
+    ["ssh gains.sudogetbig.com", "the full SwoleOS app. any username, no password"],
   ];
   o.line(p.b("try these (they work):"));
   for (const [c, d] of rows) o.line(`  ${p.g(c.padEnd(46))} ${p.m(d)}`);

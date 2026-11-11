@@ -172,7 +172,7 @@ const ssh: Command = {
   usage: "ssh gym",
   summary: "remote into the gym",
   group: "dev",
-  complete: () => ["gym", "kitchen", "couch"],
+  complete: () => ["gym", "kitchen", "couch", "gains.sudogetbig.com"],
   async run(ctx) {
     const host = (ctx.args[0] ?? "").replace(/^.*@/, "");
     if (!host) {
@@ -180,6 +180,16 @@ const ssh: Command = {
       return;
     }
     await ctx.sleep(500);
+    if (host === "gains.sudogetbig.com" || host === "gains") {
+      ctx.print(<span>ssh: this is a browser. That host is real, though.</span>);
+      ctx.print(
+        <span>
+          Open an actual terminal (PowerShell, Terminal, anything) and run <G className="font-bold">ssh gains.sudogetbig.com</G>
+        </span>,
+      );
+      ctx.print(<M>Any username, no password. Live lift log, training graph, a fake installer. Press q to leave.</M>);
+      return;
+    }
     if (host === "gym") {
       const h = new Date().getHours();
       if (h >= 0 && h < 5) {

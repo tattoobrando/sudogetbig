@@ -31,6 +31,7 @@ curl -L sudogetbig.com/lifts                # real training log (+ ?lift=leg%20p
 curl -L sudogetbig.com/neofetch
 curl -L sudogetbig.com/fortune
 curl -L sudogetbig.com/help
+ssh gains.sudogetbig.com                    # full-screen SwoleOS app (see ssh/README.md)
 ```
 
 Animations are drawn with newline-terminated frames, so curl shows them live in normal terminals.

@@ -104,6 +104,8 @@ export default function LiftsPage() {
       <section className="mt-6 grid gap-4 text-[12.5px] leading-relaxed text-muted sm:grid-cols-2">
         <div className="rounded-xl border border-line p-4">
           <h2 className="mb-1 text-[11px] uppercase tracking-[0.14em] text-dim">also in a real terminal</h2>
+          <code className="text-accent">ssh gains.sudogetbig.com</code> <span className="text-dim">(full app, no password)</span>
+          <br />
           <code className="text-accent">curl -L sudogetbig.com/lifts</code>
           <br />
           <code className="text-accent">curl -L &quot;sudogetbig.com/lifts?lift=leg press&quot;</code>

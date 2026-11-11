@@ -109,7 +109,8 @@ export default function LiftLog() {
           <TerminalSquare size={16} /> run <code>lifts</code> in the terminal
         </button>
         <code className="text-[12.5px] text-muted">
-          <span className="text-dim">or:</span> <span className="text-accent">curl -L sudogetbig.com/lifts</span>
+          <span className="text-dim">or:</span> <span className="text-accent">ssh gains.sudogetbig.com</span> <span className="text-dim">·</span>{" "}
+          <span className="text-accent">curl -L sudogetbig.com/lifts</span>
         </code>
       </div>
     </section>
