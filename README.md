@@ -90,6 +90,11 @@ are matched from exercise names in `src/lib/liftsSummary.mjs`; the script lists 
 any username, no password, no shell — just the SwoleOS terminal app with the live lift log. See
 [`ssh/README.md`](ssh/README.md) for install (it moves admin SSH to port 2222).
 
+## Gains Support Line (phone)
+
+`phone/` holds a real phone line on Amazon Connect: a menu of leg day excuses, PR judging, fake
+spotter hold music and a hidden calves department. See [`phone/README.md`](phone/README.md).
+
 ## Stack
 
 Next.js 16 (App Router) · TypeScript · Tailwind CSS v4 · Motion · Lucide icons ·
@@ -144,6 +149,7 @@ src/
   app/cli, cli/lifts, install, github/[user], neofetch, fortune, help    curl endpoints
 scripts/lifts.mjs           Liftoff CSV → src/data/lifts.json
 ssh/                        ssh gains.sudogetbig.com (runs on the droplet)
+phone/                      Gains Support Line (Amazon Connect flow + setup script)
   proxy.ts                  routes curl/wget/HTTPie/PowerShell to the text version
 ```
 

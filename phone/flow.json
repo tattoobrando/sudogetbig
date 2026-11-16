@@ -1,0 +1,1014 @@
+{
+  "Version": "2019-10-30",
+  "StartAction": "cf2675e5-85a5-5c28-bc01-6720179db0da",
+  "Metadata": {
+    "EntryPointPosition": {
+      "x": 40,
+      "y": 40
+    },
+    "ActionMetadata": {
+      "cf2675e5-85a5-5c28-bc01-6720179db0da": {
+        "position": {
+          "x": 240,
+          "y": 40
+        }
+      },
+      "17cbfde7-6698-59d7-a0e9-e4bc2904c934": {
+        "position": {
+          "x": 500,
+          "y": 40
+        }
+      },
+      "1d74dcf7-706b-57ce-98e2-59962fb52112": {
+        "position": {
+          "x": 760,
+          "y": 40
+        }
+      },
+      "5fa629ff-6074-5cb7-bc8d-389401e292ac": {
+        "position": {
+          "x": 1020,
+          "y": 40
+        }
+      },
+      "6873a2d1-ce19-5861-8a0b-8be0bcb65ef8": {
+        "position": {
+          "x": 1280,
+          "y": 40
+        }
+      },
+      "7143de36-dcd8-530c-a9f1-ea1efe450707": {
+        "position": {
+          "x": 1540,
+          "y": 40
+        }
+      },
+      "2c82e18b-b7a5-56c3-96ec-2bd696c679cf": {
+        "position": {
+          "x": 240,
+          "y": 260
+        }
+      },
+      "9060e254-583c-5551-b4bf-ec96e287dca6": {
+        "position": {
+          "x": 500,
+          "y": 260
+        }
+      },
+      "c0748d68-4ff0-5ad3-8ea2-d84b3e7b2463": {
+        "position": {
+          "x": 760,
+          "y": 260
+        }
+      },
+      "facd9516-8714-50ab-b8dc-d3b9f11625ef": {
+        "position": {
+          "x": 1020,
+          "y": 260
+        }
+      },
+      "44310763-40b5-500e-925e-972b8fefca8a": {
+        "position": {
+          "x": 1280,
+          "y": 260
+        }
+      },
+      "81e9a41f-ec87-55cc-b265-8e1e0fb7e9d1": {
+        "position": {
+          "x": 1540,
+          "y": 260
+        }
+      },
+      "7fc5b02f-88e5-5236-a937-03f459be50ed": {
+        "position": {
+          "x": 240,
+          "y": 480
+        }
+      },
+      "b7adeb67-09fb-5978-8742-07e53bb12972": {
+        "position": {
+          "x": 500,
+          "y": 480
+        }
+      },
+      "9758bca5-9cb0-5527-9c13-7c8af4c171f7": {
+        "position": {
+          "x": 760,
+          "y": 480
+        }
+      },
+      "895f29b2-b3f9-570c-b2f5-79c1e7e4206b": {
+        "position": {
+          "x": 1020,
+          "y": 480
+        }
+      },
+      "bc3f945e-dfc2-5efe-94b3-0f957a046b67": {
+        "position": {
+          "x": 1280,
+          "y": 480
+        }
+      },
+      "9be51755-1f07-5d3a-89cd-29dd31e3f28f": {
+        "position": {
+          "x": 1540,
+          "y": 480
+        }
+      },
+      "98319a49-39a7-53b0-ade7-c35ffd5a9341": {
+        "position": {
+          "x": 240,
+          "y": 700
+        }
+      },
+      "075752b0-5aa7-506a-920f-6a951b9418e7": {
+        "position": {
+          "x": 500,
+          "y": 700
+        }
+      },
+      "b4fbcc1a-f5dc-5206-9ddf-603f3223b4b3": {
+        "position": {
+          "x": 760,
+          "y": 700
+        }
+      },
+      "c55d3bd2-8581-5b57-b393-a81d0f50eded": {
+        "position": {
+          "x": 1020,
+          "y": 700
+        }
+      },
+      "4ad59f3b-e8d5-509b-bfe3-fa9b2e05904c": {
+        "position": {
+          "x": 1280,
+          "y": 700
+        }
+      },
+      "34afe6cb-2ab2-5edb-a718-f8ae0703a44f": {
+        "position": {
+          "x": 1540,
+          "y": 700
+        }
+      },
+      "e0e91015-9622-5a81-ab19-1530c18d1cbf": {
+        "position": {
+          "x": 240,
+          "y": 920
+        }
+      },
+      "d8922638-d248-564c-9723-95d865d57cbc": {
+        "position": {
+          "x": 500,
+          "y": 920
+        }
+      },
+      "dc331697-ca62-56b8-b46a-fe4082abcd58": {
+        "position": {
+          "x": 760,
+          "y": 920
+        }
+      },
+      "048f80a1-3bce-533c-a21f-aa0900ed3a59": {
+        "position": {
+          "x": 1020,
+          "y": 920
+        }
+      },
+      "3b1d62c0-850c-52cf-8eef-d59d9d675cb1": {
+        "position": {
+          "x": 1280,
+          "y": 920
+        }
+      },
+      "00a15310-52b0-573c-a378-1ab3f6aac346": {
+        "position": {
+          "x": 1540,
+          "y": 920
+        }
+      },
+      "d9ef7c3d-0413-560c-9a89-23e2bbed73ba": {
+        "position": {
+          "x": 240,
+          "y": 1140
+        }
+      },
+      "86f06c3e-5f32-5c5f-8418-bce4c8d85b03": {
+        "position": {
+          "x": 500,
+          "y": 1140
+        }
+      },
+      "e4e96af3-2a2d-581f-b310-1efff3cb39cc": {
+        "position": {
+          "x": 760,
+          "y": 1140
+        }
+      },
+      "7659b7bd-5052-528f-9fde-6defbae20afb": {
+        "position": {
+          "x": 1020,
+          "y": 1140
+        }
+      },
+      "f36a3058-8c28-5979-a0f4-ad51cb8b2543": {
+        "position": {
+          "x": 1280,
+          "y": 1140
+        }
+      },
+      "5fcfee23-3218-54f0-b006-2976409b7767": {
+        "position": {
+          "x": 1540,
+          "y": 1140
+        }
+      },
+      "b4cd564d-8e92-5d97-871f-4a5cf624eb17": {
+        "position": {
+          "x": 240,
+          "y": 1360
+        }
+      }
+    }
+  },
+  "Actions": [
+    {
+      "Identifier": "cf2675e5-85a5-5c28-bc01-6720179db0da",
+      "Type": "UpdateContactTextToSpeechVoice",
+      "Parameters": {
+        "TextToSpeechVoice": "Matthew",
+        "TextToSpeechEngine": "Neural"
+      },
+      "Transitions": {
+        "NextAction": "17cbfde7-6698-59d7-a0e9-e4bc2904c934"
+      }
+    },
+    {
+      "Identifier": "17cbfde7-6698-59d7-a0e9-e4bc2904c934",
+      "Type": "MessageParticipant",
+      "Parameters": {
+        "SSML": "<speak>Thank you for calling the Gains Support Line, a service of <sub alias=\"sue doo get big dot com\">sudogetbig.com</sub>. <break time='400ms'/>Your call is important to us. <break time='350ms'/> More important than cardio. <break time='300ms'/> Less important than protein.</speak>"
+      },
+      "Transitions": {
+        "NextAction": "1d74dcf7-706b-57ce-98e2-59962fb52112",
+        "Errors": [
+          {
+            "NextAction": "1d74dcf7-706b-57ce-98e2-59962fb52112",
+            "ErrorType": "NoMatchingError"
+          }
+        ]
+      }
+    },
+    {
+      "Identifier": "1d74dcf7-706b-57ce-98e2-59962fb52112",
+      "Type": "Loop",
+      "Parameters": {
+        "LoopCount": "6"
+      },
+      "Transitions": {
+        "NextAction": "5fcfee23-3218-54f0-b006-2976409b7767",
+        "Conditions": [
+          {
+            "NextAction": "5fa629ff-6074-5cb7-bc8d-389401e292ac",
+            "Condition": {
+              "Operator": "Equals",
+              "Operands": [
+                "ContinueLooping"
+              ]
+            }
+          },
+          {
+            "NextAction": "5fcfee23-3218-54f0-b006-2976409b7767",
+            "Condition": {
+              "Operator": "Equals",
+              "Operands": [
+                "DoneLooping"
+              ]
+            }
+          }
+        ]
+      }
+    },
+    {
+      "Identifier": "5fa629ff-6074-5cb7-bc8d-389401e292ac",
+      "Type": "GetParticipantInput",
+      "Parameters": {
+        "StoreInput": "False",
+        "InputTimeLimitSeconds": "8",
+        "SSML": "<speak>For leg day excuses, press 1. <break time='250ms'/>To report a new personal record, press 2. <break time='250ms'/>For motivation, press 3. <break time='250ms'/>For expert gym advice, press 4. <break time='250ms'/>For root's training stats, press 5. <break time='250ms'/>To speak with a spotter, press 0. <break time='250ms'/>To hear these options again, press 9. <break time='400ms'/>Or just breathe heavily, like you do between sets.</speak>"
+      },
+      "Transitions": {
+        "NextAction": "7143de36-dcd8-530c-a9f1-ea1efe450707",
+        "Conditions": [
+          {
+            "NextAction": "2c82e18b-b7a5-56c3-96ec-2bd696c679cf",
+            "Condition": {
+              "Operator": "Equals",
+              "Operands": [
+                "1"
+              ]
+            }
+          },
+          {
+            "NextAction": "81e9a41f-ec87-55cc-b265-8e1e0fb7e9d1",
+            "Condition": {
+              "Operator": "Equals",
+              "Operands": [
+                "2"
+              ]
+            }
+          },
+          {
+            "NextAction": "075752b0-5aa7-506a-920f-6a951b9418e7",
+            "Condition": {
+              "Operator": "Equals",
+              "Operands": [
+                "3"
+              ]
+            }
+          },
+          {
+            "NextAction": "34afe6cb-2ab2-5edb-a718-f8ae0703a44f",
+            "Condition": {
+              "Operator": "Equals",
+              "Operands": [
+                "4"
+              ]
+            }
+          },
+          {
+            "NextAction": "3b1d62c0-850c-52cf-8eef-d59d9d675cb1",
+            "Condition": {
+              "Operator": "Equals",
+              "Operands": [
+                "5"
+              ]
+            }
+          },
+          {
+            "NextAction": "d9ef7c3d-0413-560c-9a89-23e2bbed73ba",
+            "Condition": {
+              "Operator": "Equals",
+              "Operands": [
+                "0"
+              ]
+            }
+          },
+          {
+            "NextAction": "00a15310-52b0-573c-a378-1ab3f6aac346",
+            "Condition": {
+              "Operator": "Equals",
+              "Operands": [
+                "7"
+              ]
+            }
+          },
+          {
+            "NextAction": "1d74dcf7-706b-57ce-98e2-59962fb52112",
+            "Condition": {
+              "Operator": "Equals",
+              "Operands": [
+                "9"
+              ]
+            }
+          }
+        ],
+        "Errors": [
+          {
+            "NextAction": "6873a2d1-ce19-5861-8a0b-8be0bcb65ef8",
+            "ErrorType": "InputTimeLimitExceeded"
+          },
+          {
+            "NextAction": "7143de36-dcd8-530c-a9f1-ea1efe450707",
+            "ErrorType": "NoMatchingCondition"
+          },
+          {
+            "NextAction": "7143de36-dcd8-530c-a9f1-ea1efe450707",
+            "ErrorType": "NoMatchingError"
+          }
+        ]
+      }
+    },
+    {
+      "Identifier": "6873a2d1-ce19-5861-8a0b-8be0bcb65ef8",
+      "Type": "MessageParticipant",
+      "Parameters": {
+        "SSML": "<speak>Still there? <break time='300ms'/> Take your time. Rest periods are important.</speak>"
+      },
+      "Transitions": {
+        "NextAction": "1d74dcf7-706b-57ce-98e2-59962fb52112",
+        "Errors": [
+          {
+            "NextAction": "1d74dcf7-706b-57ce-98e2-59962fb52112",
+            "ErrorType": "NoMatchingError"
+          }
+        ]
+      }
+    },
+    {
+      "Identifier": "7143de36-dcd8-530c-a9f1-ea1efe450707",
+      "Type": "MessageParticipant",
+      "Parameters": {
+        "SSML": "<speak>That is not an option. <break time='300ms'/> Neither is skipping leg day. <break time='400ms'/> Allegedly.</speak>"
+      },
+      "Transitions": {
+        "NextAction": "1d74dcf7-706b-57ce-98e2-59962fb52112",
+        "Errors": [
+          {
+            "NextAction": "1d74dcf7-706b-57ce-98e2-59962fb52112",
+            "ErrorType": "NoMatchingError"
+          }
+        ]
+      }
+    },
+    {
+      "Identifier": "2c82e18b-b7a5-56c3-96ec-2bd696c679cf",
+      "Type": "DistributeByPercentage",
+      "Parameters": {},
+      "Transitions": {
+        "NextAction": "facd9516-8714-50ab-b8dc-d3b9f11625ef",
+        "Conditions": [
+          {
+            "NextAction": "9060e254-583c-5551-b4bf-ec96e287dca6",
+            "Condition": {
+              "Operator": "NumberLessThan",
+              "Operands": [
+                "34"
+              ]
+            }
+          },
+          {
+            "NextAction": "c0748d68-4ff0-5ad3-8ea2-d84b3e7b2463",
+            "Condition": {
+              "Operator": "NumberLessThan",
+              "Operands": [
+                "67"
+              ]
+            }
+          }
+        ],
+        "Errors": [
+          {
+            "NextAction": "facd9516-8714-50ab-b8dc-d3b9f11625ef",
+            "ErrorType": "NoMatchingCondition"
+          }
+        ]
+      }
+    },
+    {
+      "Identifier": "9060e254-583c-5551-b4bf-ec96e287dca6",
+      "Type": "MessageParticipant",
+      "Parameters": {
+        "SSML": "<speak>Today's approved leg day excuse: <break time='300ms'/> you have a big meeting tomorrow, and you'll need your legs to walk into it.</speak>"
+      },
+      "Transitions": {
+        "NextAction": "44310763-40b5-500e-925e-972b8fefca8a",
+        "Errors": [
+          {
+            "NextAction": "44310763-40b5-500e-925e-972b8fefca8a",
+            "ErrorType": "NoMatchingError"
+          }
+        ]
+      }
+    },
+    {
+      "Identifier": "c0748d68-4ff0-5ad3-8ea2-d84b3e7b2463",
+      "Type": "MessageParticipant",
+      "Parameters": {
+        "SSML": "<speak>Today's approved leg day excuse: <break time='300ms'/> your legs are already genetically gifted. You don't want to make the other legs jealous.</speak>"
+      },
+      "Transitions": {
+        "NextAction": "44310763-40b5-500e-925e-972b8fefca8a",
+        "Errors": [
+          {
+            "NextAction": "44310763-40b5-500e-925e-972b8fefca8a",
+            "ErrorType": "NoMatchingError"
+          }
+        ]
+      }
+    },
+    {
+      "Identifier": "facd9516-8714-50ab-b8dc-d3b9f11625ef",
+      "Type": "MessageParticipant",
+      "Parameters": {
+        "SSML": "<speak>Today's approved leg day excuse: <break time='300ms'/> someone is doing curls in the squat rack, and you are not one to make a scene.</speak>"
+      },
+      "Transitions": {
+        "NextAction": "44310763-40b5-500e-925e-972b8fefca8a",
+        "Errors": [
+          {
+            "NextAction": "44310763-40b5-500e-925e-972b8fefca8a",
+            "ErrorType": "NoMatchingError"
+          }
+        ]
+      }
+    },
+    {
+      "Identifier": "44310763-40b5-500e-925e-972b8fefca8a",
+      "Type": "MessageParticipant",
+      "Parameters": {
+        "SSML": "<speak><break time='300ms'/> This excuse is valid for twenty four hours. Returning to the main menu.</speak>"
+      },
+      "Transitions": {
+        "NextAction": "1d74dcf7-706b-57ce-98e2-59962fb52112",
+        "Errors": [
+          {
+            "NextAction": "1d74dcf7-706b-57ce-98e2-59962fb52112",
+            "ErrorType": "NoMatchingError"
+          }
+        ]
+      }
+    },
+    {
+      "Identifier": "81e9a41f-ec87-55cc-b265-8e1e0fb7e9d1",
+      "Type": "GetParticipantInput",
+      "Parameters": {
+        "StoreInput": "True",
+        "InputTimeLimitSeconds": "10",
+        "SSML": "<speak>Please enter your new personal record in pounds, then press pound. <break time='300ms'/> Yes, the pound key. We know.</speak>",
+        "InputValidation": {
+          "CustomValidation": {
+            "MaximumLength": "4"
+          }
+        },
+        "DTMFConfiguration": {
+          "InputTerminationSequence": "#",
+          "DisableCancelKey": "False"
+        }
+      },
+      "Transitions": {
+        "NextAction": "7fc5b02f-88e5-5236-a937-03f459be50ed",
+        "Errors": [
+          {
+            "NextAction": "9be51755-1f07-5d3a-89cd-29dd31e3f28f",
+            "ErrorType": "NoMatchingError"
+          }
+        ]
+      }
+    },
+    {
+      "Identifier": "7fc5b02f-88e5-5236-a937-03f459be50ed",
+      "Type": "Compare",
+      "Parameters": {
+        "ComparisonValue": "$.StoredCustomerInput"
+      },
+      "Transitions": {
+        "NextAction": "9be51755-1f07-5d3a-89cd-29dd31e3f28f",
+        "Conditions": [
+          {
+            "NextAction": "b7adeb67-09fb-5978-8742-07e53bb12972",
+            "Condition": {
+              "Operator": "NumberGreaterOrEqualTo",
+              "Operands": [
+                "1000"
+              ]
+            }
+          },
+          {
+            "NextAction": "9758bca5-9cb0-5527-9c13-7c8af4c171f7",
+            "Condition": {
+              "Operator": "NumberGreaterOrEqualTo",
+              "Operands": [
+                "405"
+              ]
+            }
+          },
+          {
+            "NextAction": "895f29b2-b3f9-570c-b2f5-79c1e7e4206b",
+            "Condition": {
+              "Operator": "NumberGreaterOrEqualTo",
+              "Operands": [
+                "225"
+              ]
+            }
+          },
+          {
+            "NextAction": "bc3f945e-dfc2-5efe-94b3-0f957a046b67",
+            "Condition": {
+              "Operator": "NumberGreaterOrEqualTo",
+              "Operands": [
+                "1"
+              ]
+            }
+          }
+        ],
+        "Errors": [
+          {
+            "NextAction": "9be51755-1f07-5d3a-89cd-29dd31e3f28f",
+            "ErrorType": "NoMatchingCondition"
+          }
+        ]
+      }
+    },
+    {
+      "Identifier": "b7adeb67-09fb-5978-8742-07e53bb12972",
+      "Type": "MessageParticipant",
+      "Parameters": {
+        "SSML": "<speak><say-as interpret-as='cardinal'>$.StoredCustomerInput</say-as> pounds. <break time='400ms'/> That is not a personal record. That is a forklift. <break time='300ms'/> Please return it to the warehouse.</speak>"
+      },
+      "Transitions": {
+        "NextAction": "98319a49-39a7-53b0-ade7-c35ffd5a9341",
+        "Errors": [
+          {
+            "NextAction": "98319a49-39a7-53b0-ade7-c35ffd5a9341",
+            "ErrorType": "NoMatchingError"
+          }
+        ]
+      }
+    },
+    {
+      "Identifier": "9758bca5-9cb0-5527-9c13-7c8af4c171f7",
+      "Type": "MessageParticipant",
+      "Parameters": {
+        "SSML": "<speak><say-as interpret-as='cardinal'>$.StoredCustomerInput</say-as> pounds. <break time='400ms'/> Okay. We're going to need to see the video. Raw. Unedited. Plates visible.</speak>"
+      },
+      "Transitions": {
+        "NextAction": "98319a49-39a7-53b0-ade7-c35ffd5a9341",
+        "Errors": [
+          {
+            "NextAction": "98319a49-39a7-53b0-ade7-c35ffd5a9341",
+            "ErrorType": "NoMatchingError"
+          }
+        ]
+      }
+    },
+    {
+      "Identifier": "895f29b2-b3f9-570c-b2f5-79c1e7e4206b",
+      "Type": "MessageParticipant",
+      "Parameters": {
+        "SSML": "<speak><say-as interpret-as='cardinal'>$.StoredCustomerInput</say-as> pounds. <break time='400ms'/> Respectable. Your record has been logged in a database that definitely exists.</speak>"
+      },
+      "Transitions": {
+        "NextAction": "98319a49-39a7-53b0-ade7-c35ffd5a9341",
+        "Errors": [
+          {
+            "NextAction": "98319a49-39a7-53b0-ade7-c35ffd5a9341",
+            "ErrorType": "NoMatchingError"
+          }
+        ]
+      }
+    },
+    {
+      "Identifier": "bc3f945e-dfc2-5efe-94b3-0f957a046b67",
+      "Type": "MessageParticipant",
+      "Parameters": {
+        "SSML": "<speak><say-as interpret-as='cardinal'>$.StoredCustomerInput</say-as> pounds. <break time='400ms'/> Every record counts. <break time='300ms'/> This one counts too. Barely. We're proud of you anyway.</speak>"
+      },
+      "Transitions": {
+        "NextAction": "98319a49-39a7-53b0-ade7-c35ffd5a9341",
+        "Errors": [
+          {
+            "NextAction": "98319a49-39a7-53b0-ade7-c35ffd5a9341",
+            "ErrorType": "NoMatchingError"
+          }
+        ]
+      }
+    },
+    {
+      "Identifier": "9be51755-1f07-5d3a-89cd-29dd31e3f28f",
+      "Type": "MessageParticipant",
+      "Parameters": {
+        "SSML": "<speak>We didn't catch a number. <break time='300ms'/> That's fine. We'll call it a rest day.</speak>"
+      },
+      "Transitions": {
+        "NextAction": "98319a49-39a7-53b0-ade7-c35ffd5a9341",
+        "Errors": [
+          {
+            "NextAction": "98319a49-39a7-53b0-ade7-c35ffd5a9341",
+            "ErrorType": "NoMatchingError"
+          }
+        ]
+      }
+    },
+    {
+      "Identifier": "98319a49-39a7-53b0-ade7-c35ffd5a9341",
+      "Type": "MessageParticipant",
+      "Parameters": {
+        "SSML": "<speak><break time='300ms'/> Returning to the main menu.</speak>"
+      },
+      "Transitions": {
+        "NextAction": "1d74dcf7-706b-57ce-98e2-59962fb52112",
+        "Errors": [
+          {
+            "NextAction": "1d74dcf7-706b-57ce-98e2-59962fb52112",
+            "ErrorType": "NoMatchingError"
+          }
+        ]
+      }
+    },
+    {
+      "Identifier": "075752b0-5aa7-506a-920f-6a951b9418e7",
+      "Type": "DistributeByPercentage",
+      "Parameters": {},
+      "Transitions": {
+        "NextAction": "4ad59f3b-e8d5-509b-bfe3-fa9b2e05904c",
+        "Conditions": [
+          {
+            "NextAction": "b4fbcc1a-f5dc-5206-9ddf-603f3223b4b3",
+            "Condition": {
+              "Operator": "NumberLessThan",
+              "Operands": [
+                "34"
+              ]
+            }
+          },
+          {
+            "NextAction": "c55d3bd2-8581-5b57-b393-a81d0f50eded",
+            "Condition": {
+              "Operator": "NumberLessThan",
+              "Operands": [
+                "67"
+              ]
+            }
+          }
+        ],
+        "Errors": [
+          {
+            "NextAction": "4ad59f3b-e8d5-509b-bfe3-fa9b2e05904c",
+            "ErrorType": "NoMatchingCondition"
+          }
+        ]
+      }
+    },
+    {
+      "Identifier": "b4fbcc1a-f5dc-5206-9ddf-603f3223b4b3",
+      "Type": "MessageParticipant",
+      "Parameters": {
+        "SSML": "<speak>Remember: <break time='300ms'/> the weight doesn't care how you feel. <break time='400ms'/> Neither do we. Go lift.</speak>"
+      },
+      "Transitions": {
+        "NextAction": "1d74dcf7-706b-57ce-98e2-59962fb52112",
+        "Errors": [
+          {
+            "NextAction": "1d74dcf7-706b-57ce-98e2-59962fb52112",
+            "ErrorType": "NoMatchingError"
+          }
+        ]
+      }
+    },
+    {
+      "Identifier": "c55d3bd2-8581-5b57-b393-a81d0f50eded",
+      "Type": "MessageParticipant",
+      "Parameters": {
+        "SSML": "<speak>Every rep you skip is a rep someone else is doing. <break time='400ms'/> Probably with worse form. But still.</speak>"
+      },
+      "Transitions": {
+        "NextAction": "1d74dcf7-706b-57ce-98e2-59962fb52112",
+        "Errors": [
+          {
+            "NextAction": "1d74dcf7-706b-57ce-98e2-59962fb52112",
+            "ErrorType": "NoMatchingError"
+          }
+        ]
+      }
+    },
+    {
+      "Identifier": "4ad59f3b-e8d5-509b-bfe3-fa9b2e05904c",
+      "Type": "MessageParticipant",
+      "Parameters": {
+        "SSML": "<speak>You are one workout away from a good mood. <break time='400ms'/> And one leg day away from a bad one.</speak>"
+      },
+      "Transitions": {
+        "NextAction": "1d74dcf7-706b-57ce-98e2-59962fb52112",
+        "Errors": [
+          {
+            "NextAction": "1d74dcf7-706b-57ce-98e2-59962fb52112",
+            "ErrorType": "NoMatchingError"
+          }
+        ]
+      }
+    },
+    {
+      "Identifier": "34afe6cb-2ab2-5edb-a718-f8ae0703a44f",
+      "Type": "MessageParticipant",
+      "Parameters": {
+        "SSML": "<speak>The following is not medical advice. <break time='300ms'/> Or advice.</speak>"
+      },
+      "Transitions": {
+        "NextAction": "e0e91015-9622-5a81-ab19-1530c18d1cbf",
+        "Errors": [
+          {
+            "NextAction": "e0e91015-9622-5a81-ab19-1530c18d1cbf",
+            "ErrorType": "NoMatchingError"
+          }
+        ]
+      }
+    },
+    {
+      "Identifier": "e0e91015-9622-5a81-ab19-1530c18d1cbf",
+      "Type": "DistributeByPercentage",
+      "Parameters": {},
+      "Transitions": {
+        "NextAction": "048f80a1-3bce-533c-a21f-aa0900ed3a59",
+        "Conditions": [
+          {
+            "NextAction": "d8922638-d248-564c-9723-95d865d57cbc",
+            "Condition": {
+              "Operator": "NumberLessThan",
+              "Operands": [
+                "34"
+              ]
+            }
+          },
+          {
+            "NextAction": "dc331697-ca62-56b8-b46a-fe4082abcd58",
+            "Condition": {
+              "Operator": "NumberLessThan",
+              "Operands": [
+                "67"
+              ]
+            }
+          }
+        ],
+        "Errors": [
+          {
+            "NextAction": "048f80a1-3bce-533c-a21f-aa0900ed3a59",
+            "ErrorType": "NoMatchingCondition"
+          }
+        ]
+      }
+    },
+    {
+      "Identifier": "d8922638-d248-564c-9723-95d865d57cbc",
+      "Type": "MessageParticipant",
+      "Parameters": {
+        "SSML": "<speak>If it doesn't hurt, add weight. <break time='300ms'/> If it does hurt, call a doctor. Not this number.</speak>"
+      },
+      "Transitions": {
+        "NextAction": "1d74dcf7-706b-57ce-98e2-59962fb52112",
+        "Errors": [
+          {
+            "NextAction": "1d74dcf7-706b-57ce-98e2-59962fb52112",
+            "ErrorType": "NoMatchingError"
+          }
+        ]
+      }
+    },
+    {
+      "Identifier": "dc331697-ca62-56b8-b46a-fe4082abcd58",
+      "Type": "MessageParticipant",
+      "Parameters": {
+        "SSML": "<speak>Protein is a personality trait now. <break time='300ms'/> Act accordingly.</speak>"
+      },
+      "Transitions": {
+        "NextAction": "1d74dcf7-706b-57ce-98e2-59962fb52112",
+        "Errors": [
+          {
+            "NextAction": "1d74dcf7-706b-57ce-98e2-59962fb52112",
+            "ErrorType": "NoMatchingError"
+          }
+        ]
+      }
+    },
+    {
+      "Identifier": "048f80a1-3bce-533c-a21f-aa0900ed3a59",
+      "Type": "MessageParticipant",
+      "Parameters": {
+        "SSML": "<speak>The gym mirror adds ten pounds of muscle. The lighting adds five more. <break time='300ms'/> Check your progress in a gas station bathroom to stay humble.</speak>"
+      },
+      "Transitions": {
+        "NextAction": "1d74dcf7-706b-57ce-98e2-59962fb52112",
+        "Errors": [
+          {
+            "NextAction": "1d74dcf7-706b-57ce-98e2-59962fb52112",
+            "ErrorType": "NoMatchingError"
+          }
+        ]
+      }
+    },
+    {
+      "Identifier": "3b1d62c0-850c-52cf-8eef-d59d9d675cb1",
+      "Type": "MessageParticipant",
+      "Parameters": {
+        "SSML": "<speak>Root's training log, as of the last update: <break time='300ms'/> more than eighteen months of logged workouts, and not a single missed week since early twenty twenty five. <break time='400ms'/>Leg training has fallen to about four percent of total sets. <break time='300ms'/> An investigation is ongoing. <break time='400ms'/>For live charts, visit <sub alias=\"sue doo get big dot com\">sudogetbig.com</sub> slash lifts.</speak>"
+      },
+      "Transitions": {
+        "NextAction": "1d74dcf7-706b-57ce-98e2-59962fb52112",
+        "Errors": [
+          {
+            "NextAction": "1d74dcf7-706b-57ce-98e2-59962fb52112",
+            "ErrorType": "NoMatchingError"
+          }
+        ]
+      }
+    },
+    {
+      "Identifier": "00a15310-52b0-573c-a378-1ab3f6aac346",
+      "Type": "MessageParticipant",
+      "Parameters": {
+        "SSML": "<speak>You found the secret menu. <break time='300ms'/> Connecting you to the calves department. <break time='1500ms'/>We're sorry. <break time='200ms'/> The calves you are trying to reach do not exist. <break time='300ms'/> Please check the genetics and try again.</speak>"
+      },
+      "Transitions": {
+        "NextAction": "1d74dcf7-706b-57ce-98e2-59962fb52112",
+        "Errors": [
+          {
+            "NextAction": "1d74dcf7-706b-57ce-98e2-59962fb52112",
+            "ErrorType": "NoMatchingError"
+          }
+        ]
+      }
+    },
+    {
+      "Identifier": "d9ef7c3d-0413-560c-9a89-23e2bbed73ba",
+      "Type": "MessageParticipant",
+      "Parameters": {
+        "SSML": "<speak>Please hold while we connect you to the next available spotter.</speak>"
+      },
+      "Transitions": {
+        "NextAction": "86f06c3e-5f32-5c5f-8418-bce4c8d85b03",
+        "Errors": [
+          {
+            "NextAction": "86f06c3e-5f32-5c5f-8418-bce4c8d85b03",
+            "ErrorType": "NoMatchingError"
+          }
+        ]
+      }
+    },
+    {
+      "Identifier": "86f06c3e-5f32-5c5f-8418-bce4c8d85b03",
+      "Type": "MessageParticipant",
+      "Parameters": {
+        "SSML": "<speak><break time='3s'/> All spotters are currently filming themselves. Please continue to hold.</speak>"
+      },
+      "Transitions": {
+        "NextAction": "e4e96af3-2a2d-581f-b310-1efff3cb39cc",
+        "Errors": [
+          {
+            "NextAction": "e4e96af3-2a2d-581f-b310-1efff3cb39cc",
+            "ErrorType": "NoMatchingError"
+          }
+        ]
+      }
+    },
+    {
+      "Identifier": "e4e96af3-2a2d-581f-b310-1efff3cb39cc",
+      "Type": "MessageParticipant",
+      "Parameters": {
+        "SSML": "<speak><break time='3s'/> Your estimated wait time is: <break time='300ms'/> one more set.</speak>"
+      },
+      "Transitions": {
+        "NextAction": "7659b7bd-5052-528f-9fde-6defbae20afb",
+        "Errors": [
+          {
+            "NextAction": "7659b7bd-5052-528f-9fde-6defbae20afb",
+            "ErrorType": "NoMatchingError"
+          }
+        ]
+      }
+    },
+    {
+      "Identifier": "7659b7bd-5052-528f-9fde-6defbae20afb",
+      "Type": "MessageParticipant",
+      "Parameters": {
+        "SSML": "<speak><break time='3s'/> Good news. A spotter has been located. <break time='500ms'/> They are on their phone.</speak>"
+      },
+      "Transitions": {
+        "NextAction": "f36a3058-8c28-5979-a0f4-ad51cb8b2543",
+        "Errors": [
+          {
+            "NextAction": "f36a3058-8c28-5979-a0f4-ad51cb8b2543",
+            "ErrorType": "NoMatchingError"
+          }
+        ]
+      }
+    },
+    {
+      "Identifier": "f36a3058-8c28-5979-a0f4-ad51cb8b2543",
+      "Type": "MessageParticipant",
+      "Parameters": {
+        "SSML": "<speak><break time='1500ms'/> They did not look up. <break time='300ms'/> Please try again after your next set. Goodbye.</speak>"
+      },
+      "Transitions": {
+        "NextAction": "b4cd564d-8e92-5d97-871f-4a5cf624eb17",
+        "Errors": [
+          {
+            "NextAction": "b4cd564d-8e92-5d97-871f-4a5cf624eb17",
+            "ErrorType": "NoMatchingError"
+          }
+        ]
+      }
+    },
+    {
+      "Identifier": "5fcfee23-3218-54f0-b006-2976409b7767",
+      "Type": "MessageParticipant",
+      "Parameters": {
+        "SSML": "<speak>That's the whole menu. <break time='300ms'/> That's more cardio than most callers get. <break time='400ms'/>Thanks for calling the Gains Support Line. <break time='300ms'/> Go hit legs.</speak>"
+      },
+      "Transitions": {
+        "NextAction": "b4cd564d-8e92-5d97-871f-4a5cf624eb17",
+        "Errors": [
+          {
+            "NextAction": "b4cd564d-8e92-5d97-871f-4a5cf624eb17",
+            "ErrorType": "NoMatchingError"
+          }
+        ]
+      }
+    },
+    {
+      "Identifier": "b4cd564d-8e92-5d97-871f-4a5cf624eb17",
+      "Type": "DisconnectParticipant",
+      "Parameters": {},
+      "Transitions": {}
+    }
+  ]
+}
